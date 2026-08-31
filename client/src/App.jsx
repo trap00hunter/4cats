@@ -11,19 +11,19 @@ const THEMES = {
     gradient: "from-chill-50 via-chill-100 to-chill-200",
     text: "text-chill-text",
     shadow: "shadow-[6px_6px_0px_0px_theme(colors.chill.shadow)]",
-    mascot: "Nginig Kuting",
+    mascot: "Chilly Cat",
     emoji: "🧣",
-    line: "“Nangangatog ang whiskers ko! Sarap mag-kape sa Session Road.”",
+    line: "“Nangangatog ang tuhod ko?? Don't let your cats drink coffee.”",
   },
   presko: {
-    label: "Tropical Presko",
+    label: "Tropical Goodness",
     range: "22°C – 28°C",
     gradient: "from-presko-50 via-presko-100 to-presko-200",
     text: "text-presko-text",
     shadow: "shadow-[6px_6px_0px_0px_theme(colors.presko.shadow)]",
-    mascot: "Munimuni Mingming",
+    mascot: "Brain Empty Mingming",
     emoji: "🍃",
-    line: "“Purr-fect na panahon! Presko ang simoy ng hangin.”",
+    line: "“Purr-fect weather! Presko ang simoy ng hangin.”",
   },
   sunny: {
     label: "Sunny / Maaliwalas",
@@ -31,9 +31,9 @@ const THEMES = {
     gradient: "from-sunny-50 via-sunny-100 to-sunny-200",
     text: "text-sunny-text",
     shadow: "shadow-[6px_6px_0px_0px_theme(colors.sunny.shadow)]",
-    mascot: "Sunny Pusa",
+    mascot: "Sunny Cat",
     emoji: "🕶️",
-    line: "“Mainit-init pero keri! Mag-apply ng sunblock bago maglakwatsa.”",
+    line: "“Mainit-init pero keri! Mag-apply ng sunblock bago lumabas.”",
   },
   meowinit: {
     label: "“Meow-init!” Heat Alert",
@@ -43,7 +43,7 @@ const THEMES = {
     shadow: "shadow-[6px_6px_0px_0px_theme(colors.meowinit.shadow)]",
     mascot: "Meow-init",
     emoji: "🥵",
-    line: "“Sobrang init meow! Painumin ng tubig ang sarili at mga alagang pusa!”",
+    line: "“Extreme heat! Don't forget to stay hydrated!”",
   },
   habagat: {
     label: "Habagat Monsoon / Rain",
@@ -51,7 +51,7 @@ const THEMES = {
     gradient: "from-habagat-50 via-habagat-100 to-habagat-200",
     text: "text-habagat-text",
     shadow: "shadow-[6px_6px_0px_0px_theme(colors.habagat.shadow)]",
-    mascot: "Tampisaw",
+    mascot: "Tampis-meow",
     emoji: "☔",
     line: "“Basa ang paws! Magdala ng payong at mag-ingat sa baha.”",
   },
@@ -61,7 +61,7 @@ const THEMES = {
     gradient: "from-bagyo-50 via-bagyo-100 to-bagyo-200",
     text: "text-bagyo-text",
     shadow: "shadow-[6px_6px_0px_0px_theme(colors.bagyo.shadow)]",
-    mascot: "Bagyo Box Cat",
+    mascot: "Scaredy Box Cat",
     emoji: "📦",
     line: "“Signal No. Meow! Stay safe indoors with emergency treats.”",
   },
@@ -73,7 +73,7 @@ const THEMES = {
     shadow: "shadow-[6px_6px_0px_0px_theme(colors.midnight.shadow)]",
     mascot: "Meowdnight",
     emoji: "🌙",
-    line: "“Matulog nang mahimbing, gising ang mga pusa sa gabi.”",
+    line: "“Sleep tight, as your cats watch you.”",
     dark: true,
   },
 };
@@ -118,7 +118,6 @@ export default function App() {
 
   const { locate, status: geoStatus, coords: geoCoords } = useGeolocation();
 
-  // Tick clock every second
   useEffect(() => {
     const id = setInterval(() => setPhTime(getPhTime()), 1000);
     return () => clearInterval(id);

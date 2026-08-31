@@ -1,12 +1,7 @@
-// useWeather.js
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { fetchForecast, fetchForecastByCity } from '../services/openMeteoApi';
 import { transformWeatherData } from '../utils/weatherTransformer';
 
-/**
- * Central weather state hook.
- * status: 'idle' | 'loading' | 'success' | 'error'
- */
 export function useWeather(initialCoords = null) {
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
@@ -89,4 +84,4 @@ export function useWeather(initialCoords = null) {
     isError: status === 'error',
     isSuccess: status === 'success',
   };
-}
+}

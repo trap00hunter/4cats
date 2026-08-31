@@ -1,6 +1,3 @@
-// openMeteoApi.js
-// Zero-config Open-Meteo client. No API key required.
-
 const GEOCODE_URL = 'https://geocoding-api.open-meteo.com/v1/search';
 const FORECAST_URL = 'https://api.open-meteo.com/v1/forecast';
 
@@ -31,9 +28,6 @@ const HOURLY_VARS = [
   'wind_speed_10m',
 ].join(',');
 
-/**
- * Predefined Philippine cities organized by Island Group for 1-click forecasts.
- */
 export const PH_CITIES = [
   // Luzon
   { name: 'Manila', group: 'Luzon', latitude: 14.5995, longitude: 120.9842, admin1: 'Metro Manila', country: 'Philippines' },
@@ -57,10 +51,6 @@ export const PH_CITIES = [
   { name: 'Coron', group: 'Hotspots', latitude: 12.0019, longitude: 120.2039, admin1: 'Palawan', country: 'Philippines' },
 ];
 
-/**
- * Search for a city / place by name. Returns up to `count` matches.
- * Biased toward the Philippines when results are ambiguous, but works globally.
- */
 export async function searchCity(query, count = 5) {
   if (!query || query.trim().length < 2) return [];
   const url = `${GEOCODE_URL}?name=${encodeURIComponent(query.trim())}&count=${count}&language=en&format=json`;
@@ -70,10 +60,6 @@ export async function searchCity(query, count = 5) {
   return data.results || [];
 }
 
-/**
- * Fetch current + hourly + daily (past 3 days -> today -> next 7 days) forecast
- * for a given lat/lon, matching the WeatherTimeline spec.
- */
 export async function fetchForecast(lat, lon, { pastDays = 3, forecastDays = 8 } = {}) {
   const params = new URLSearchParams({
     latitude: String(lat),
@@ -90,7 +76,6 @@ export async function fetchForecast(lat, lon, { pastDays = 3, forecastDays = 8 }
   return res.json();
 }
 
-/** Convenience: geocode a city name then immediately fetch its forecast. */
 export async function fetchForecastByCity(cityName) {
   const results = await searchCity(cityName, 1);
   if (!results.length) throw new Error('CITY_NOT_FOUND');
@@ -101,4 +86,4 @@ export async function fetchForecastByCity(cityName) {
 
 export function celsiusToFahrenheit(c) {
   return (c * 9) / 5 + 32;
-}
+}

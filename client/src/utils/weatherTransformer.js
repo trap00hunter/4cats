@@ -1,10 +1,4 @@
-﻿// weatherTransformer.js
-// Parses raw Open-Meteo API response into structured views for 4cats Pinas.
-
-/**
- * WMO Weather code to simplified condition mapping.
- */
-export function getConditionFromWmo(code) {
+﻿export function getConditionFromWmo(code) {
   if (code === 0 || code === 1) return 'clear';
   if (code === 2 || code === 3) return 'cloudy';
   if (code === 45 || code === 48) return 'fog';
@@ -15,9 +9,6 @@ export function getConditionFromWmo(code) {
   return 'clear';
 }
 
-/**
- * Weather condition emoji mapping.
- */
 export const CONDITION_EMOJIS = {
   clear: '☀️',
   cloudy: '⛅',
@@ -27,17 +18,13 @@ export const CONDITION_EMOJIS = {
   snow: '❄️',
 };
 
-/**
- * Calculate PAGASA Heat Index (°C) using Steadman / Rothfusz equation.
- * Applies when temperature is >= 27°C and relative humidity >= 40%.
- */
 export function calculateHeatIndex(tempC, humidity) {
   if (tempC < 27 || humidity < 40) {
     return {
       heatIndexC: Math.round(tempC),
       level: 'Safe',
       tagalogLevel: 'Presko / Ligtas',
-      advice: '😺 Chill lang, keri ang simoy ng hangin.',
+      advice: 'Chill.',
       percentage: Math.min(100, Math.max(0, ((tempC - 20) / (45 - 20)) * 100)),
     };
   }
@@ -64,7 +51,7 @@ export function calculateHeatIndex(tempC, humidity) {
       heatIndexC,
       level: 'Caution',
       tagalogLevel: 'Ingat / Mainit-init',
-      advice: '🐱 Mainit-init pero keri! Mag-apply ng sunblock bago lumabas.',
+      advice: 'Mainit-init pero keri! Mag-apply ng sunblock bago lumabas.',
       percentage,
     };
   }
@@ -73,7 +60,7 @@ export function calculateHeatIndex(tempC, humidity) {
       heatIndexC,
       level: 'Extreme Caution',
       tagalogLevel: 'Sobrang Ingat / Meow-init',
-      advice: '😿 Meow-init! Uminom ng malamig na tubig at magpayong.',
+      advice: 'Meow-init! Uminom ng malamig na tubig at magpayong.',
       percentage,
     };
   }
@@ -82,7 +69,7 @@ export function calculateHeatIndex(tempC, humidity) {
       heatIndexC,
       level: 'Danger',
       tagalogLevel: 'Panganib / Sobrang Init',
-      advice: '🥵 Meow-init Danger! Painumin ng tubig ang sarili at mga alagang pusa!',
+      advice: 'Danger: Sobrang Meow-init! Don`t forget to have your cats drink water too.',
       percentage,
     };
   }
@@ -90,7 +77,7 @@ export function calculateHeatIndex(tempC, humidity) {
     heatIndexC,
     level: 'Extreme Danger',
     tagalogLevel: 'Matinding Panganib',
-    advice: '🚨 Matinding Meow-init! Manatili sa malamig na kwarto kasama ang pusa.',
+    advice: 'Danger: Ultra Giga Extreme Heat! Don`t let your cats outside your airconditioned homes.',
     percentage,
   };
 }

@@ -1,7 +1,3 @@
-// weatherMap.js
-// Maps Open-Meteo WMO weather codes + temperature + wind to a Fore-cat mascot,
-// theme gradient, and Pinoy-flavored feline commentary.
-
 export const TEMP_THEMES = [
   {
     id: 'chilly',
@@ -29,7 +25,7 @@ export const TEMP_THEMES = [
     max: 33,
     gradient: 'from-amber-100 to-yellow-200',
     shadow: 'shadow-amber-300/50',
-    mascot: 'Sunny Pusa',
+    mascot: 'Sunny Cat',
     image: '/cats/cat-sunny.png',
     quote: 'Mainit-init pero keri! Mag-apply ng sunblock bago maglakwatsa.',
   },
@@ -45,12 +41,11 @@ export const TEMP_THEMES = [
   },
 ];
 
-// WMO code -> base condition entry. isDay swaps clear-sky art.
 export const WEATHER_CAT_MAP = {
   0: (isDay) => ({
     label: isDay ? 'Clear Sky' : 'Clear Night',
     image: isDay ? '/cats/cat-sunny.png' : '/cats/cat-night-clear.png',
-    mascot: isDay ? 'Sunny Pusa' : 'Midnight Mingming',
+    mascot: isDay ? 'Sunny Cat' : 'Midnight Cat',
     quote: isDay ? 'Pawsitively glorious sunshine today!' : 'Purrfect starry night for a nap.',
     gradient: isDay ? 'from-amber-100 to-yellow-200' : 'from-indigo-950 via-slate-900 to-sky-950',
   }),

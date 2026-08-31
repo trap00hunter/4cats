@@ -1,4 +1,3 @@
-// useGeolocation.js
 import { useState, useCallback } from 'react';
 
 const MANILA_FALLBACK = { lat: 14.5995, lon: 120.9842, name: 'Manila' };
