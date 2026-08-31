@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  * {
+    @apply border-ink;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-ink bg-paper antialiased;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(27, 27, 47, 0.07) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  :focus-visible {
+    outline: 3px solid #1B1B2F;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .cartoon-card {
+    @apply relative bg-white border-3 border-ink rounded-3xl shadow-pop;
+  }
+
+  .cartoon-card-hover {
+    @apply transition-transform duration-150 ease-out hover:-translate-y-0.5 hover:shadow-pop-hover active:translate-y-0.5 active:shadow-pop-press;
+  }
+
+  .cat-ears::before,
+  .cat-ears::after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    width: 26px;
+    height: 26px;
+    background: inherit;
+    border: 3px solid #1B1B2F;
+    border-radius: 6px 40% 6px 6px;
+    z-index: -1;
+  }
+  .cat-ears::before {
+    left: 14%;
+    transform: rotate(-18deg);
+  }
+  .cat-ears::after {
+    right: 14%;
+    transform: rotate(108deg);
+  }
+
+  .paw-pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border-3 border-ink bg-white px-3 py-1 text-sm font-semibold shadow-pop-sm;
+  }
+
+  .cat-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #1B1B2F transparent;
+  }
+  .cat-scroll::-webkit-scrollbar {
+    height: 10px;
+  }
+  .cat-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .cat-scroll::-webkit-scrollbar-thumb {
+    background-color: #1B1B2F;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  .stitch-divider {
+    border-top: 3px dashed rgba(27, 27, 47, 0.35);
+  }
+}
